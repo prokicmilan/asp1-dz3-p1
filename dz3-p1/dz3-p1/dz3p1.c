@@ -410,7 +410,7 @@ int diameter(int** graph, int nodes) {
 
 	if (graph == NULL) {
 		printf("Graf ne postoji\n");
-		return NULL;
+		return -1;
 	}
 	distances = floydWarshall(graph, nodes, NULL);
 	for (i = 0; i < nodes; i++) {
@@ -432,7 +432,7 @@ int relCenNode(int** graph, int nodes) {
 
 	if (graph == NULL) {
 		printf("Graf ne postoji\n");
-		return NULL;
+		return -1;
 	}
 	printf("Unesite zeljeni cvor: ");
 	scanf("%d", &node);
@@ -479,6 +479,8 @@ int main(void) {
 	int edges;
 
 	graph = NULL;
+	nodes = 0;
+	edges = 0;
 	radi = true;
 	while (radi) {
 		printMenu();
@@ -486,7 +488,7 @@ int main(void) {
 		switch (choice) {
 		case 1:
 			if (graph != NULL) {
-				graph = deleteGraph(graph, nodes, edges);
+				graph = deleteGraph(graph, &nodes, &edges);
 			}
 			graph = loadGraph(&nodes, &edges);
 			printf("Ucitan graf: \n");
@@ -514,10 +516,12 @@ int main(void) {
 			printf("Dijametar grafa je %d\n", diameter(graph, nodes));
 			break;
 		case 9:
+			
 			printf("%d\n", relCenNode(graph, nodes));
 			break;
 		case 0:
 			radi = false;
+			deleteGraph(graph, &nodes, &edges);
 			break;
 		default:
 			printf("Nepostojeca opcija.\n");
