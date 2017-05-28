@@ -144,7 +144,7 @@ void addEdge(int*** graph, int nodes, int* edges) {
 
 	if (*graph == NULL) {
 		printf("Graf ne postoji\n");
-		return NULL;
+		return;
 	}
 	printf("Unesite redne brojeve cvorova izmedju kojih se dodaje nova grana: ");
 	scanf("%d%d", &nodeA, &nodeB);
@@ -221,7 +221,7 @@ void removeEdge(int*** graph, int nodes, int* edges) {
 
 	if (*graph == NULL) {
 		printf("Graf ne postoji\n");
-		return NULL;
+		return;
 	}
 	printf("Unesite redne brojeve cvorova izmedju kojih se brise grana: ");
 	scanf("%d%d", &nodeA, &nodeB);
@@ -378,7 +378,7 @@ void geodesicDistance(int **graph, int nodes) {
 
 	if (graph == NULL) {
 		printf("Graf ne postoji\n");
-		return NULL;
+		return;
 	}
 	printf("Unesite pocetni i krajnji cvor: ");
 	scanf("%d%d", &start, &end);
